@@ -32,3 +32,24 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+
+* .tmp
+
+# Palabra temporal
+~ $ * .doc *
+
+# Word Auto Backup File
+Copia  de  seguridad de * .doc *
+
+# Excel temporal
+~ $ * .xls *
+
+# Archivo de copia de seguridad de Excel
+* .xlk
+
+# PowerPoint temporal
+~ $ * .ppt *
+
+# Visio guarda automáticamente los archivos temporales
+* . ~ vsd *

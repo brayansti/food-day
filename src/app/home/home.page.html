@@ -8,15 +8,32 @@
 
 <ion-content>
 	<article class="homeContainer">
-		<div class="homeContainer__banner">
+		<!-- <div class="homeContainer__banner">
 			<ion-img src="../assets/images/home/bg_home.jpg"></ion-img>
 			<article class="homeContainer__title">
 				Prestamos dinero entre personas para juntos cumplir nuestros sueños
 			</article>
+		</div> -->
+		<div>
+			<ion-img src="../assets/images/logo/logo.jpg"></ion-img>
 		</div>
 		<div class="ion-padding homeContainer__content">
-			The world is your oyster.
-			<p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+			<div class="boxItems">
+				<ion-item>
+					<ion-input placeholder="Usuario">
+						<ion-icon size="large" name="person"></ion-icon>
+					</ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-input placeholder="Contraseña">
+						<ion-icon size="large" name="unlock"></ion-icon>
+					</ion-input>
+				</ion-item>
+			</div>
+			<div class="boxItems">
+				<ion-button color="primary" expand="block">Iniciar sesion</ion-button>
+				<ion-button color="secondary" expand="block">Regístrate aquí</ion-button>
+			</div>
 		</div>
 	</article>
 </ion-content>

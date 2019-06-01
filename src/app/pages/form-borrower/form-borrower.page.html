@@ -1,19 +1,72 @@
-<ion-header>
+<!-- <ion-header>
 	<ion-toolbar>
 		<ion-title>formBorrower</ion-title>
 	</ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-	<ion-slides paginationType="fraction" pager="true" [options]="slideOpts">
+	<div class="ion-padding">
+		<h1>
+			Solicita tu crédito
+		</h1>
+	</div>
+	<ion-slides paginationType="bullets" pager="true" [options]="slideOpts">
 		<ion-slide>
-			Buena la hp rata 1
+			<form action="" class="slide__content ion-padding">
+				<div class="boxItems">
+					<ion-item>
+						<ion-input placeholder="Usuario"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-input placeholder="Contraseña"></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>Hair Color</ion-label>
+						<ion-select okText="OK" cancelText="Cancelar">
+							<ion-select-option value="brown">Brown</ion-select-option>
+							<ion-select-option value="blonde">Blonde</ion-select-option>
+							<ion-select-option value="black">Black</ion-select-option>
+							<ion-select-option value="red">Red</ion-select-option>
+						</ion-select>
+					</ion-item>
+
+				</div>
+				<div class="boxItems">
+					<ion-button color="primary" expand="block">Continuar</ion-button>
+				</div>
+			</form>
 		</ion-slide>
 		<ion-slide>
-			Buena la hp rata 2
+			<div class="boxItems">
+				<ion-button color="primary" expand="block">Continuar</ion-button>
+			</div>
 		</ion-slide>
 		<ion-slide>
-			Buena la hp rata 3
+			<form action="" class="slide__content ion-padding">
+				<div class="boxItems">
+					<ion-item>
+						<ion-input placeholder="Usuario"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-input placeholder="Contraseña"></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>Hair Color</ion-label>
+						<ion-select okText="OK" cancelText="Cancelar">
+							<ion-select-option value="brown">Brown</ion-select-option>
+							<ion-select-option value="blonde">Blonde</ion-select-option>
+							<ion-select-option value="black">Black</ion-select-option>
+							<ion-select-option value="red">Red</ion-select-option>
+						</ion-select>
+					</ion-item>
+
+				</div>
+				<div class="boxItems">
+					<ion-button color="primary" expand="block">Continuar</ion-button>
+				</div>
+			</form>
 		</ion-slide>
 	</ion-slides>
 </ion-content>

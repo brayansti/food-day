@@ -10,25 +10,11 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-ion-alert{
-    --width:350px !important; 
-    --height:280px !important;
-    
-};
-.alert-head{
-    background-image: url("assets/images/home/bg_home.jpg");
-    height: 50%;
-    text-align: left;
-    padding-top: 80px !important; 
-}
-.alert-title.sc-ion-alert-md {
-    color: #fff;
-}
-.alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md {
-    padding-bottom: 0px;
-    padding-top: 20px;
-}
 // .alert-head{
 //     padding-top: 10px !important; 
 //     text-align: left;
 // }
+
+.alert-wrapper{
+    border-radius: 0 !important;
+}

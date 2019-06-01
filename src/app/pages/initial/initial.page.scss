@@ -1,0 +1,38 @@
+
+.homeContainer{
+    display: flex;
+    height: 100vh;
+    color: #fff;
+    flex-direction: column;
+    background-color: #1B2D36;
+    &__banner{
+        position: relative;
+    }
+    &__content{
+        // background-color: #1B2D36;
+    }
+    &__title{
+        left: 20px;
+        bottom: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        position: absolute;
+    }
+};
+ion-alert{
+ --background: red !important;
+}
+
+// .boxItems{
+//     margin-bottom: 20px;
+//     ion-item{
+//         margin-bottom: 10px;
+//         ion-icon{
+//             color: gray;
+//         }
+//     }
+//     ion-button{
+//         margin-bottom: 10px;
+//         --border-radius: 0px;
+//     }
+// }

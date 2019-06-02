@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Slides } from '@ionic/angular';
+import {IonSlides} from '@ionic/angular';
+
 
 
 @Component({
@@ -10,9 +11,10 @@ import { Slides } from '@ionic/angular';
 })
 export class FormBorrowerPage implements OnInit {
 
-	constructor(Slides : Slides) { }
+	constructor() { }
 
 	ngOnInit() {
+		
 	}
 	
 
@@ -20,9 +22,6 @@ export class FormBorrowerPage implements OnInit {
 		
 	};
 
-  //Move to Next slide
-	public nex(){
-		this.Slides.slideNext();
-	}
+
 
 }

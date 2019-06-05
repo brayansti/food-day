@@ -14,33 +14,97 @@
 		<ion-slide>
 			<form action="" class="slide__content ion-padding">
 				<div class="boxItems">
+					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Usuario"></ion-input>
-					</ion-item>
-					<ion-item>
-						<ion-input placeholder="Contraseña"></ion-input>
-					</ion-item>
-
-					<ion-item>
-						<ion-label>Hair Color</ion-label>
-						<ion-select okText="OK" cancelText="Cancelar">
-							<ion-select-option value="brown">Brown</ion-select-option>
-							<ion-select-option value="blonde">Blonde</ion-select-option>
-							<ion-select-option value="black">Black</ion-select-option>
-							<ion-select-option value="red">Red</ion-select-option>
+						<ion-label>Cuanto dinero necesitas?</ion-label>
+						<ion-select cancelText="Cancelar">
+							<ion-select-option value="50000">$50.000</ion-select-option>
+							<ion-select-option value="100000">$100.000</ion-select-option>
+							<ion-select-option value="200000">$200.000</ion-select-option>
+							<ion-select-option value="300000">$300.000</ion-select-option>
+							<ion-select-option value="400000">$400.000</ion-select-option>
+							<ion-select-option value="500000">$500.000</ion-select-option>
 						</ion-select>
 					</ion-item>
-
+					<!-- New Input -->
+					<ion-item>
+						<ion-label>En cuantos meses deseas pagar?</ion-label>
+						<ion-select cancelText="Cancelar">
+							<ion-select-option value="1">1</ion-select-option>
+							<ion-select-option value="2">2</ion-select-option>
+							<ion-select-option value="3">3</ion-select-option>
+							<ion-select-option value="4">4</ion-select-option>
+							<ion-select-option value="5">5</ion-select-option>
+							<ion-select-option value="6">6</ion-select-option>
+						</ion-select>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Para que no necesitas?"></ion-input>
+					</ion-item>
 				</div>
 				<div class="boxItems">
-					<ion-button color="primary" expand="block">Continuar</ion-button>
+					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 				</div>
 			</form>
 		</ion-slide>
 		<ion-slide>
-			<div class="boxItems">
-				<ion-button color="primary" expand="block">Continuar</ion-button>
-			</div>
+			<form action="" class="slide__content ion-padding">
+				<div class="boxItems">
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Primer nombre"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Segundo nombre"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Segundo apellido"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Segundo apellido"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Segundo apellido"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Fecha de nacimiento"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label>Sexo</ion-label>
+						<ion-select cancelText="Cancelar">
+							<ion-select-option value="Masculino">Masculino</ion-select-option>
+							<ion-select-option value="Femenino">Femenino</ion-select-option>
+						</ion-select>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label>Tipo de documeto</ion-label>
+						<ion-select cancelText="Cancelar">
+							<ion-select-option value="cedula">CC</ion-select-option>
+							<ion-select-option value="pasaporte">Pasaporte</ion-select-option>
+						</ion-select>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Número de documento"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Direccion"></ion-input>
+					</ion-item>
+				</div>
+				<div class="boxItems">
+					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
+				</div>
+			</form>
 		</ion-slide>
 		<ion-slide>
 			<form action="" class="slide__content ion-padding">
@@ -64,7 +128,8 @@
 
 				</div>
 				<div class="boxItems">
-					<ion-button color="primary" expand="block">Continuar</ion-button>
+					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
 				</div>
 			</form>
 		</ion-slide>

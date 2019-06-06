@@ -23,4 +23,6 @@ const routes: Routes = [
   ],
   declarations: [FormBorrowerPage]
 })
-export class FormBorrowerPageModule {}
+export class FormBorrowerPageModule {
+  
+}

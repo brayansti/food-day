@@ -12,7 +12,7 @@
 	</div>
 	<ion-slides paginationType="bullets" pager="true" [options]="slideOpts">
 		<ion-slide>
-			<form action="" class="slide__content ion-padding">
+			<form [formGroup]="registerForm" action="" class="slide__content ion-padding">
 				<div class="boxItems">
 					<!-- New Input -->
 					<ion-item>
@@ -40,11 +40,11 @@
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Para que no necesitas?"></ion-input>
+						<ion-input formControlName="requiredInput" placeholder="Para que no necesitas?"></ion-input>
 					</ion-item>
 				</div>
 				<div class="boxItems">
-					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button [disabled]="registerForm.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 				</div>
 			</form>
 		</ion-slide>

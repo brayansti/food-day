@@ -38,6 +38,10 @@ ion-slides {
     --bullet-background-active: #E5A506;
     padding-top: 40px;
 }
+ion-grid{
+    padding-left: 0;
+    padding-right: 0;
+}
 
 // ↓↓ shadow DOOM
 ::ng-deep {

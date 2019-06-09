@@ -1326,7 +1326,7 @@ export class FormBorrowerPage implements OnInit {
 	) {}
 
 	slideOpts = {
-		initialSlide: 1,
+		initialSlide: 3,
 		allowTouchMove: false
 	};
 	nextIonSlide(){
@@ -1340,6 +1340,23 @@ export class FormBorrowerPage implements OnInit {
 	// submitted = false;
 	formStep1: FormGroup;
 	formStep2: FormGroup;
+	formStep3: FormGroup;
+	formStep4: FormGroup;
+
+	passwordMatch1: string;
+	passwordMatch2: string;
+
+	modelgastosAlimentos : number = null;
+	modelgastosArriendo : number = null;
+	modelgastosServicios : number = null;
+	modelgastosTransporte : number = null;
+	modelgastosEducacion : number = null;
+	modelgastosRecreacion : number = null;
+	modelgastosTarjetas : number = null;
+	modelgastosSeguros : number = null;
+	modelgastosOtros : number = null;
+
+	
 
 	ngOnInit() {
 		console.log(this.dataDeptos);
@@ -1362,6 +1379,25 @@ export class FormBorrowerPage implements OnInit {
 			city: ['' , Validators.required],
 			terminos: ['' , Validators.required],
 		});
+        this.formStep3 = this.formBuilder.group({
+		});
+        this.formStep4 = this.formBuilder.group({
+			gastosAlimentos: ['' , Validators.required],
+			gastosArriendo: ['' , Validators.required],
+			gastosServicios: ['' , Validators.required],
+			gastosTransporte: ['' , Validators.required],
+			gastosEducacion: ['' , Validators.required],
+			gastosRecreacion: ['' , Validators.required],
+			gastosTarjetas: ['' , Validators.required],
+			gastosSeguros: ['' , Validators.required],
+			gastosOtros: ['' , Validators.required],
+			personasDependen: ['' , Validators.required],
+		});
+	}
+
+	currencyInputChanged(value) {
+		var num = value.replace(/[$,]/g, "");
+		return Number(num);
 	}
 
 	// onSubmit() {

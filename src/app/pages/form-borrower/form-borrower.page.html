@@ -150,34 +150,134 @@
 					</ion-item>
 				</div>
 				<div class="boxItems">
-					<ion-button [disabled]="formStep2.status == 'INVALID' && !termsConds" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button [disabled]="formStep2.status == 'INVALID' || !termsConds" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
 				</div>
 			</form>
 		</ion-slide>
 		<ion-slide>
-			<form action="" class="slide__content ion-padding">
+			<form [formGroup]="formStep3" action="" class="slide__content ion-padding">
 				<div class="boxItems">
+					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Usuario"></ion-input>
-					</ion-item>
-					<ion-item>
-						<ion-input placeholder="Contraseña"></ion-input>
-					</ion-item>
-
-					<ion-item>
-						<ion-label>Hair Color</ion-label>
+						<ion-label>Situación Laboral</ion-label>
 						<ion-select okText="OK" cancelText="Cancelar">
-							<ion-select-option value="brown">Brown</ion-select-option>
-							<ion-select-option value="blonde">Blonde</ion-select-option>
-							<ion-select-option value="black">Black</ion-select-option>
-							<ion-select-option value="red">Red</ion-select-option>
+							<ion-select-option value="brown">Empleado</ion-select-option>
+							<ion-select-option value="blonde">Trabajo por mi cuenta</ion-select-option>
+							<ion-select-option value="black">Tengo un negocio</ion-select-option>
+							<ion-select-option value="red">Jubilado o pensionado</ion-select-option>
 						</ion-select>
 					</ion-item>
-
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Nombre enmpresa o negocio"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Que puesto tienes"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Antigüedad en la empresa"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-input placeholder="Teléfono empresa"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Ingresos mensuales libres de impuestos</ion-label>
+						<ion-input type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Otros Ingresos</ion-label>
+						<ion-input type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label> Estas afiliado al sistema de salud</ion-label>
+						<ion-toggle color="secondary"></ion-toggle>
+					</ion-item>
 				</div>
 				<div class="boxItems">
 					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
+				</div>
+			</form>
+		</ion-slide>
+		<ion-slide>
+			<form [formGroup]="formStep4" action="" class="slide__content ion-padding">
+				<div class="boxItems">
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Alimentos, salud y ropa</ion-label>
+						<ion-input (focus)="this.select()" [(ngModel)]="modelgastosAlimentos" formControlName="gastosAlimentos" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Arriendo / Alquiler</ion-label>
+						<ion-input [(ngModel)]="modelgastosArriendo" formControlName="gastosArriendo" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Servicios públicos</ion-label>
+						<ion-input [(ngModel)]="modelgastosServicios" formControlName="gastosServicios" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Transporte / Gasolina</ion-label>
+						<ion-input [(ngModel)]="modelgastosTransporte" formControlName="gastosTransporte" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Educación</ion-label>
+						<ion-input [(ngModel)]="modelgastosEducacion" formControlName="gastosEducacion" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Recreación (personal o familiar)</ion-label>
+						<ion-input [(ngModel)]="modelgastosRecreacion" formControlName="gastosRecreacion" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Tarjetas de credito / Deudas</ion-label>
+						<ion-input [(ngModel)]="modelgastosTarjetas" formControlName="gastosTarjetas" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Seguros</ion-label>
+						<ion-input [(ngModel)]="modelgastosSeguros" formControlName="gastosSeguros" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label position="floating">Otros gastos</ion-label>
+						<ion-input [(ngModel)]="modelgastosOtros" formControlName="gastosOtros" type="number" placeholder="$"></ion-input>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<ion-label>Cuantas personas que depende de ti?</ion-label>
+						<ion-select formControlName="personasDependen" cancelText="Cancelar">
+							<ion-select-option value="0">Ninguna</ion-select-option>
+							<ion-select-option value="1">1</ion-select-option>
+							<ion-select-option value="2">2</ion-select-option>
+							<ion-select-option value="3">3</ion-select-option>
+							<ion-select-option value="4">4</ion-select-option>
+							<ion-select-option value="5">5</ion-select-option>
+						</ion-select>
+					</ion-item>
+					<!-- New Input -->
+					<ion-item>
+						<div class="boxTotalMoney">
+							<p>TOTAL: </p>
+							<ion-text color="primary">
+								{{ (modelgastosAlimentos + modelgastosArriendo + modelgastosServicios + modelgastosTransporte + modelgastosEducacion + modelgastosRecreacion + modelgastosTarjetas + modelgastosSeguros + modelgastosOtros) | currency:'$' : 'symbol':'0.0-0'}}
+							</ion-text>
+						</div>
+					</ion-item>
+				</div>
+				<div class="boxItems">
+					<ion-button [disabled]="formStep4.status == 'INVALID'" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
 				</div>
 			</form>

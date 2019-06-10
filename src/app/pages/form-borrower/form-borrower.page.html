@@ -201,7 +201,7 @@
 					</ion-item>
 				</div>
 				<div class="boxItems">
-					<ion-button disabled color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+					<ion-button [disabled]="formStep3.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
 				</div>
 			</form>

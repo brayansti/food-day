@@ -1326,7 +1326,7 @@ export class FormBorrowerPage implements OnInit {
 	) {}
 
 	slideOpts = {
-		initialSlide: 3,
+		// initialSlide: 0,
 		allowTouchMove: false
 	};
 	nextIonSlide(){

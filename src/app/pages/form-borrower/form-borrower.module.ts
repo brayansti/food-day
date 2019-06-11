@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { FormBorrowerPage } from './form-borrower.page';
 
+// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +22,12 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
+    
   ],
   declarations: [FormBorrowerPage]
 })
-export class FormBorrowerPageModule {}
+export class FormBorrowerPageModule {
+  
+}

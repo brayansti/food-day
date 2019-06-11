@@ -19,8 +19,7 @@ export class InitialPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Bienvenido',
       message: 'Seleciona el rol que se ajuste a tus intereses.',
-      buttons: ['LISTO'],
-      cssClass: 'alertDanger'
+      buttons: ['LISTO']
     });
 
     await alert.present();

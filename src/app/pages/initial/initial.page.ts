@@ -42,7 +42,7 @@ export class InitialPage implements OnInit {
 
     logout() {
       this.authService.logoutUser()
-        .then(res => {
+        .then(res => { 
           console.log(res);
           this.navCtrl.navigateBack('');
         })

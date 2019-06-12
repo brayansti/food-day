@@ -42,6 +42,7 @@
 					<ion-item>
 						<ion-input minlength="5" formControlName="requiredInput" placeholder="Para que no necesitas?"></ion-input>
 					</ion-item>
+					<p *ngIf="formStep1.controls.requiredInput.errors" class="requiredText">Required</p>
 				</div>
 				<div class="boxItems">
 					<ion-button [disabled]="formStep1.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>

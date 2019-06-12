@@ -31,3 +31,11 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.requiredText{
+    font-size: 14px;
+    margin-top: -5px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: var(--ion-color-danger);
+}

@@ -1359,12 +1359,12 @@ export class FormBorrowerPage implements OnInit {
 	
 
 	ngOnInit() {
-		console.log(this.dataDeptos);
         this.formStep1 = this.formBuilder.group({
             cuantoNecesitas: ['', Validators.required],
             cuantosMeses: ['', Validators.required],
             requiredInput: ['', Validators.required],
 		});
+		console.log(this.formStep1);
         this.formStep2 = this.formBuilder.group({
 			PrimerNombre: ['' , Validators.required],
 			SegundoNombre: ['' , Validators.required],

@@ -1,0 +1,56 @@
+ion-item{
+    --background: #fff;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-bottom: 5px;
+    margin-bottom: 15px;
+    ion-label{
+        font-size: 16px;
+        // color: rgba(#000000, 0.3);
+    }
+    ion-input{
+        
+    }
+    ion-icon{
+        right: 0;
+        bottom: 10px;
+        position: absolute;
+    }
+}
+
+ion-content{
+    --ion-background-color:#ECECEC;
+}
+
+.profilePicture{
+    text-align: center;
+    ion-img{
+        width: auto;
+        display: inline-block;
+    }
+}
+
+::ng-deep{
+    .native-input[disabled],
+    .item-interactive-disabled .label-floating{
+        opacity: 1!important;
+    }
+
+    // ↓↓ Alert Header Styles
+    .alert-head {
+        padding-top: 0px!important;
+        padding-bottom: 0px!important;
+    }
+    // ↓↓ Alert Styles
+    .alert-message{
+        text-align: left!important;
+        padding-inline-end: 0!important;
+        padding-inline-start: 0!important;
+    }
+    .containerAlert{
+        &__message{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}

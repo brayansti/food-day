@@ -88,7 +88,7 @@ export class HomePage implements OnInit {
     .then(res => {
       console.log(res);
       this.errorMessage = "";
-      this.navCtrl.navigateForward('/initial');
+      this.navCtrl.navigateForward('/menu');
 
     }, err => {
       this.errorMessage = err.message;

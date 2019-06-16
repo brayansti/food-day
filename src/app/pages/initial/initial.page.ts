@@ -22,12 +22,12 @@ export class InitialPage implements OnInit {
 
   }
   ngOnInit() {
-    this.presentAlert()
-    if (this.authService.userDetails()) {
-      this.userEmail = this.authService.userDetails().email;
-    } else {
-      this.navCtrl.navigateBack('/home');
-    }
+    // this.presentAlert()
+    // if (this.authService.userDetails()) {
+    //   this.userEmail = this.authService.userDetails().email;
+    // } else {
+    //   this.navCtrl.navigateBack('/home');
+    // }
   }
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -41,14 +41,14 @@ export class InitialPage implements OnInit {
   }
 
     logout() {
-      this.authService.logoutUser()
-        .then(res => { 
-          console.log(res);
-          this.navCtrl.navigateBack('');
-        })
-        .catch(error => {
-          console.log(error);
-        })
+      // this.authService.logoutUser()
+      //   .then(res => { 
+      //     console.log(res);
+      //     this.navCtrl.navigateBack('');
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   })
     }
 
 }

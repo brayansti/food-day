@@ -8,7 +8,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
   
-  constructor(public alertController: AlertController) {}
+  constructor(
+    public alertController: AlertController
+  ) {}
 
   ngOnInit() {
     // this.presentAlert( 1, '$300.000');

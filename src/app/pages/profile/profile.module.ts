@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+// ↓↓
+//import { MenuComponent } from "../../components/menu/menu.component";
+
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
@@ -21,6 +24,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  //entryComponents: [MenuComponent],
   declarations: [ProfilePage]
 })
 export class ProfilePageModule {}

@@ -23,6 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 
+
 firebase.initializeApp(environment.firebaseConfig);
 
 const uri ="https://api.graph.cool/simple/v1/cjwffcf7f1p0r0139e62i4cth"

@@ -27,15 +27,15 @@
 				<h4>Historial de créditos solicitados</h4>
 			</ion-text>
 		</div>
-		<ion-item (click)="presentAlert( 1, '$300.000')">
+		<ion-item>
 			<ion-label color="success" position="floating">Aprobado</ion-label>
 			<ion-input [disabled]="true" value="$ 300.000"></ion-input>
-			<ion-icon color="medium" name="information-circle-outline"></ion-icon>
+			<ion-icon (click)="presentAlert( 1, '$300.000')" color="medium" name="information-circle-outline"></ion-icon>
 		</ion-item>
-		<ion-item (click)="presentAlert( 0, '$300.000')">
+		<ion-item>
 			<ion-label color="danger" position="floating">Rechazado</ion-label>
 			<ion-input [disabled]="true" value="$ 400.000"></ion-input>
-			<ion-icon color="medium" name="information-circle-outline"></ion-icon>
+			<ion-icon (click)="presentAlert( 0, '$300.000')" color="medium" name="information-circle-outline"></ion-icon>
 		</ion-item>
 	</div>
 </ion-content>

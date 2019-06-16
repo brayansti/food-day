@@ -13,7 +13,10 @@ ion-item{
     }
     ion-icon{
         right: 0;
+        width: 30px;
+        height: 30px;
         bottom: 10px;
+        z-index: 100;
         position: absolute;
     }
 }

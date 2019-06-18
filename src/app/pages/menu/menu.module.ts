@@ -12,19 +12,18 @@ const routes: Routes = [
     path: '',
     component: MenuPage,
     children: [
-	    { 
+	    {
         path: 'initial',
         loadChildren: '../initial/initial.module#InitialPageModule' 
       },
-    	{ 
+    	{
         path: 'form-borrower',
         loadChildren: '../form-borrower/form-borrower.module#FormBorrowerPageModule'
        },
-      { 
+      {
         path: 'profile',
         loadChildren: '../profile/profile.module#ProfilePageModule' 
-      }    
-
+      }
     ]
   },
   {

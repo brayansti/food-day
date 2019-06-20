@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 import { ApolloQueryResult } from 'apollo-client';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/firebase/authentication.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -88,7 +88,7 @@ export class HomePage implements OnInit {
     .then(res => {
       console.log(res);
       this.errorMessage = "";
-      this.navCtrl.navigateForward('/menu');
+      this.navCtrl.navigateForward('/menu/profile');
 
     }, err => {
       this.errorMessage = err.message;

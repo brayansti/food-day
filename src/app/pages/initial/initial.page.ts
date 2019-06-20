@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 import { NavController, ModalController } from '@ionic/angular';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/firebase/authentication.service';
 
 
 @Component({

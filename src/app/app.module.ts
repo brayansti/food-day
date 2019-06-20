@@ -17,7 +17,7 @@ import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 //firebase
 import { environment } from 'src/environments/environment';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './services/firebase/authentication.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

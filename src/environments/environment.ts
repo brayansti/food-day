@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyAVtxF_fx9fZrzXkteB5nVQxQNp1WJvW3I",
+    apiKey: "AIzaSyCD5bUg7JfY6lPkKaoG5zbJs_TLljL5kRw",
     authDomain: "moon-cdca4.firebaseapp.com",
     databaseURL: "https://moon-cdca4.firebaseio.com",
     projectId: "moon-cdca4",

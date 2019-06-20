@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/firebase/authentication.service';
 import { NavController } from '@ionic/angular';
 
 @Component({

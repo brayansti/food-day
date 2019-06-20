@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from "@angular/router";
 import { NavController } from '@ionic/angular';
 
+import { AuthenticationService } from '../../services/firebase/authentication.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -42,6 +44,7 @@ export class MenuPage implements OnInit {
   constructor(
     private router: Router,
     private navCtrl: NavController,
+    private authService: AuthenticationService,
 
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
@@ -54,8 +57,19 @@ export class MenuPage implements OnInit {
     
   }
 
-  cerrarSecion() {
-    this.navCtrl.navigateForward('/home');
+  // cerrarSecion() {
+  //   this.navCtrl.navigateForward('/home');
+  // }
+
+  logout() {
+    this.authService.logoutUser()
+      .then(res => { 
+        console.log(res);
+        this.navCtrl.navigateBack('');
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
 

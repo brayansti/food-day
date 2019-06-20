@@ -3,7 +3,6 @@ ion-item{
     --padding-end: 10px;
     --padding-start: 10px;
     --padding-bottom: 5px;
-    margin-bottom: 15px;
     ion-label{
         font-size: 16px;
         // color: rgba(#000000, 0.3);
@@ -19,6 +18,9 @@ ion-item{
         z-index: 100;
         position: absolute;
     }
+}
+ion-button{
+    --border-radius: 0px;
 }
 
 ion-content{

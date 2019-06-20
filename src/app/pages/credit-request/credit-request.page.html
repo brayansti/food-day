@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-menu-button color="dark"></ion-menu-button>
+		<ion-title>Menu</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+	
+<ion-content>
+	<div class="ion-padding">
+		<div>
+			<ion-text color="dark">
+				<h4>Solicitudes disponibles</h4>
+			</ion-text>
+		</div>
+		<ion-item>
+			<ion-label color="dark" position="floating">Juan Perez</ion-label>
+			<ion-input color="primary" [disabled]="true" value="$ 300.000"></ion-input>
+			<ion-icon (click)="seeDetaill('1')" color="secondary" name="arrow-dropright-circle"></ion-icon>
+		</ion-item>
+		<ion-item>
+			<ion-label color="dark" position="floating">Mary Jane</ion-label>
+			<ion-input color="primary" [disabled]="true" value="$ 400.000"></ion-input>
+			<ion-icon (click)="seeDetaill('2')" color="secondary" name="arrow-dropright-circle"></ion-icon>
+		</ion-item>
+		<ion-item>
+			<ion-label color="dark" position="floating">Sonia Andrea</ion-label>
+			<ion-input color="primary" [disabled]="true" value="$ 400.000"></ion-input>
+			<ion-icon (click)="seeDetaill('3')" color="secondary" name="arrow-dropright-circle"></ion-icon>
+		</ion-item>
+	</div>
+</ion-content>

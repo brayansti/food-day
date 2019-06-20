@@ -3,17 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-// ↓↓
-//import { MenuComponent } from "../../components/menu/menu.component";
-
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { CreditRequestPage } from './credit-request.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: CreditRequestPage
   }
 ];
 
@@ -24,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  //entryComponents: [MenuComponent],
-  declarations: [ProfilePage]
+  declarations: [CreditRequestPage]
 })
-export class ProfilePageModule {}
+export class CreditRequestPageModule {}

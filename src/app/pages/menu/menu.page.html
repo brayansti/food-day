@@ -1,0 +1,40 @@
+ <!-- <ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-split-pane>
+  <ion-menu menuId="avocadoMenu" side="start" type="overlay" contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+         <ion-menu-toggle *ngFor="let items of pages">  <!--auto-hide="false" -->
+          
+          <ion-item [routerLink] = "items.url" routerDirection="root" [class.active-item]="selectedPath === items.url">
+          <ion-icon name="{{ items.icon }}" slot="start"></ion-icon>
+            {{ items.title }}
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item (click)="cerrarSecion()">
+          <ion-icon name="log-out"></ion-icon>
+          Cerrar sesión
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
+

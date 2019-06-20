@@ -67,3 +67,10 @@ ion-grid{
         }
     }
 }
+
+::ng-deep{
+    .native-input[disabled].sc-ion-input-ios{
+        opacity: 1;
+    }
+
+}

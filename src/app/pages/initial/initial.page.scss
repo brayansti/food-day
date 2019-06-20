@@ -35,24 +35,24 @@
         }
     }
     
-    ion-alert{
-        --width:350px !important; 
-        --height:280px !important;
+    // ion-alert{
+    //     --width:350px !important; 
+    //     --height:280px !important;
         
-    };
-    .alert-head{
-        height: 50%;
-        text-align: left;
-        padding-top: 80px !important; 
-        background-position: center;
-        background-size: cover;
-        background-image: url("../../../assets/images/jc-gellidon-565177-unsplash.jpg");
-    }
-    .alert-title.sc-ion-alert-md {
-        color: #fff;
-    }
-    .alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md {
-        padding-bottom: 0px;
-        padding-top: 20px;
-    }
+    // };
+    // .alert-head{
+    //     height: 50%;
+    //     text-align: left;
+    //     padding-top: 80px !important; 
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-image: url("../../../assets/images/jc-gellidon-565177-unsplash.jpg");
+    // }
+    // .alert-title.sc-ion-alert-md {
+    //     color: #fff;
+    // }
+    // .alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md {
+    //     padding-bottom: 0px;
+    //     padding-top: 20px;
+    // }
 }

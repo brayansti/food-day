@@ -1,0 +1,34 @@
+
+ion-content{
+    --ion-background-color:#ECECEC;
+}
+
+ion-item{
+    --background: #fff;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-bottom: 5px;
+    margin-bottom: 15px;
+    ion-label{
+        font-size: 16px;
+        // color: rgba(#000000, 0.3);
+    }
+    ion-input{
+        
+    }
+    ion-icon{
+        right: 0;
+        width: 30px;
+        height: 30px;
+        bottom: 10px;
+        z-index: 100;
+        position: absolute;
+    }
+}
+
+::ng-deep{
+    .native-input[disabled],
+    .item-interactive-disabled .label-floating{
+        opacity: 1!important;
+    }
+}

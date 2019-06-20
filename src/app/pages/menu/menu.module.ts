@@ -23,6 +23,14 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: '../profile/profile.module#ProfilePageModule' 
+      },
+      {
+        path: 'credit-request',
+        loadChildren: '../credit-request/credit-request.module#CreditRequestPageModule'
+      },
+      {
+        path: 'credit-detail',
+        loadChildren: '../credit-detail/credit-detail.module#CreditDetailPageModule'
       }
     ]
   },

@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-menu-button color="dark"></ion-menu-button>
+		<ion-title>Menu</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="profilePicture">
+		<ion-img src="../../../assets/images/profile/attractive-beautiful-beauty-1892511.png"></ion-img>
+		<ion-text color="dark">
+			<h3>Mary Jane</h3>
+		</ion-text>
+	</div>
+	<!-- ↓↓  Grid start -->
+	<ion-grid>
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label color="success" position="floating">Pago</ion-label>
+					<ion-input color="principal" [disabled]="true" value="$9.000"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label color="success" position="floating">Ganancias mensuales</ion-label>
+					<ion-input color="principal" [disabled]="true" value="$9.000"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<!-- ↓↓ Row ↓↓ -->
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label color="success" position="floating">Cuota mensual</ion-label>
+					<ion-input [disabled]="true" value="$ 59.000"></ion-input>
+					<!-- <ion-icon (click)="presentAlert( 1, '$300.000')" color="medium" name="information-circle-outline"></ion-icon> -->
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label color="success" position="floating">Ganancias totales</ion-label>
+					<ion-input [disabled]="true" value="$54.000"></ion-input>
+					<!-- <ion-icon (click)="presentAlert( 1, '$300.000')" color="medium" name="information-circle-outline"></ion-icon> -->
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<div class="ion-padding">
+		<div class="boxItems">
+			<ion-button color="primary" expand="block" (click)="openAproved()">Prestar a Mary</ion-button>
+		</div>
+	</div>
+
+</ion-content>

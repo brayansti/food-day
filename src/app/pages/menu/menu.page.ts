@@ -24,6 +24,16 @@ export class MenuPage implements OnInit {
       title: 'Formulario',
       url: '/menu/form-borrower',
       icon: 'clipboard'
+    },
+    {
+      title: 'Solicitudes disponibles',
+      url: '/menu/credit-request',
+      icon: 'list'
+    },
+    {
+      title: 'Detalle',
+      url: '/menu/credit-detail',
+      icon: 'list'
     }
   ];
 

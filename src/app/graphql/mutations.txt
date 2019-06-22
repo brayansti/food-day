@@ -1,0 +1,46 @@
+# ↓↓↓ Create USER ↓↓↓
+mutation{
+  createUser(
+    name:"Brayan"
+    lastName: "Camargo"
+    nameTwo: "Gaitán"
+    lastNameTwo:"Stiven"
+    birdDate: "2019-06-22T15:53:21.000Z"
+    documentType: 1
+    documentNumber: "11011012234"
+    phone: 123654
+    cellPhone: "3122251546"
+    education: "maestria"
+    gender: 1
+    idFirebase: "xHur4AhAlDMpK2if60hmbD4AqVn1"
+  ){
+    id,
+		updatedAt,
+    createdAt,
+  }
+}
+
+
+# ↓↓↓ Create address with user relation ↓↓↓
+mutation{
+  createAddress(
+    address: "Carrera 12"
+    addressDetail1: "95"
+    addressDetail2: "74"
+    country: "62"
+    city: "Bogotá"
+    userId: "cjx7szta0099s0176ihmzw9f5"
+  ){
+    id
+  }
+}
+
+
+# ↓↓↓ Query user by ID ↓↓↓
+query {
+  User(
+    id : "cjx7s7re3043j01635gjz1qou"
+  ){
+    email
+  }
+}

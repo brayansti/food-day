@@ -11,21 +11,6 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
 
 import { Storage } from '@ionic/storage';
 
-// const CurrentUserForProfile = gql`
-//   query CurrentUserForProfile {
-  //     User(
-    //         idFirebase : "xHur4AhAlDMpK2if60hmbD4AqVn1"
-    //       ){
-      //         name
-      //         addresses{
-        //           addressDetail1
-        //           addressDetail2
-        //           address
-        //         }
-        //       }
-        //     }
-        //   }
-        // `;
 const CurrentUserForProfile = gql`
   query CurrentUserForProfile($idFirebase: String!) {
     User(
@@ -54,8 +39,6 @@ export class ProfilePage implements OnInit, OnDestroy {
     private navCtrl: NavController,
   ) {}
 
-  firebaseId = "xHur4AhAlDMpK2if60hmbD4AqVn1";
-
   getUserById( firebaseId:string ){
     this.querySubscription = this.apollo
     .watchQuery({
@@ -65,8 +48,9 @@ export class ProfilePage implements OnInit, OnDestroy {
       },
     })
     .valueChanges.subscribe(({data}) => {
-      this.currentUser = data;
-      console.log(this.currentUser)
+      this.currentUser = data.User;
+      console.log( data.User );
+      // console.log(this.currentUser)
     });
   }
 
@@ -80,22 +64,6 @@ export class ProfilePage implements OnInit, OnDestroy {
       // console.log('firebaseEmail' + val);
     } )
 
-
-    // ↓↓↓ Esto funciona ...!!! perro
-    // this.querySubscription = this.apollo
-    // .watchQuery({
-    //   query: CurrentUserForProfile,
-    //   variables: {
-    //     idFirebase: this.firebaseId,
-    //   },
-    // })
-    // .valueChanges.subscribe(({data}) => {
-    //   this.currentUser = data;
-    //   console.log(this.currentUser)
-    // });
-    // ↑↑↑ Esto funciona ...!!! perro
-
-  // this.getUserData('1231231f23d123g1');
   }
   ngOnDestroy(){
     this.querySubscription.unsubscribe();
@@ -145,11 +113,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   loading = true;
   error: any;
 
-  pushUserNavCtrl() {
-    // this.navCtrl.navigateForward(`/user/${ this.valor }`);
-    this.navCtrl.navigateForward(`/mapa`);
-  }
-  // getUserData(firebaseID:String){
 
   // }
 }

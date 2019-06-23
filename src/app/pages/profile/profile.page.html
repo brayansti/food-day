@@ -7,9 +7,10 @@
 <ion-content>
 	<div class="profilePicture">
 		<ion-img src="../../../assets/images/profile/attractive-beautiful-beauty-1892511.png"></ion-img>
-		<ion-text color="dark">
-			<h5>
-				<!-- {{ rates.name }} -->
+		<ion-text color="dark" >
+			<h5 *ngIf="currentUser">
+				<!-- {{ currentUser.User.name }} -->
+				{{ currentUser.name }}
 			</h5>
 		</ion-text>
 	</div>

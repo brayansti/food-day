@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
+import { Subscription } from 'rxjs';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -10,19 +11,95 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
 
 import { Storage } from '@ionic/storage';
 
+// const CurrentUserForProfile = gql`
+//   query CurrentUserForProfile {
+  //     User(
+    //         idFirebase : "xHur4AhAlDMpK2if60hmbD4AqVn1"
+    //       ){
+      //         name
+      //         addresses{
+        //           addressDetail1
+        //           addressDetail2
+        //           address
+        //         }
+        //       }
+        //     }
+        //   }
+        // `;
+const CurrentUserForProfile = gql`
+  query CurrentUserForProfile($idFirebase: String!) {
+    User(
+        idFirebase : $idFirebase
+      )
+    {
+      name
+    }
+  }
+`;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
-  
+
+export class ProfilePage implements OnInit, OnDestroy {
+  currentUser: any;
+  private querySubscription: Subscription;
+
   constructor(
     private storage: Storage,
     public alertController: AlertController,
     private apollo: Apollo,
     private navCtrl: NavController,
   ) {}
+
+  firebaseId = "xHur4AhAlDMpK2if60hmbD4AqVn1";
+
+  getUserById( firebaseId:string ){
+    this.querySubscription = this.apollo
+    .watchQuery({
+      query: CurrentUserForProfile,
+      variables: {
+        idFirebase: firebaseId,
+      },
+    })
+    .valueChanges.subscribe(({data}) => {
+      this.currentUser = data;
+      console.log(this.currentUser)
+    });
+  }
+
+  ngOnInit() {
+    this.storage.get('firebaseId').then((val) => {
+      // console.log('firebaseId →→ Profile ' + val);
+      this.getUserById(val)
+    });
+
+    this.storage.get('firebaseEmail').then( (val) =>{
+      // console.log('firebaseEmail' + val);
+    } )
+
+
+    // ↓↓↓ Esto funciona ...!!! perro
+    // this.querySubscription = this.apollo
+    // .watchQuery({
+    //   query: CurrentUserForProfile,
+    //   variables: {
+    //     idFirebase: this.firebaseId,
+    //   },
+    // })
+    // .valueChanges.subscribe(({data}) => {
+    //   this.currentUser = data;
+    //   console.log(this.currentUser)
+    // });
+    // ↑↑↑ Esto funciona ...!!! perro
+
+  // this.getUserData('1231231f23d123g1');
+  }
+  ngOnDestroy(){
+    this.querySubscription.unsubscribe();
+  }
 
 
   async presentAlert( state:number, value:string  ) {
@@ -72,40 +149,7 @@ export class ProfilePage implements OnInit {
     // this.navCtrl.navigateForward(`/user/${ this.valor }`);
     this.navCtrl.navigateForward(`/mapa`);
   }
+  // getUserData(firebaseID:String){
 
-  ngOnInit() {
-
-    this.storage.get('firebaseId').then((val) => {
-      console.log('firebaseId' + val);
-    });
-
-    this.storage.get('firebaseEmail').then( (val) =>{
-      console.log('firebaseEmail' + val);
-    } )
-
-    this.apollo
-      .watchQuery({
-        query: gql`
-            {
-              User(
-                id : "cjx7szta0099s0176ihmzw9f5"
-              ){
-                name
-                addresses{
-                  addressDetail1
-                  addressDetail2
-                  address
-                }
-              }
-            }
-        `,
-      })
-      .valueChanges.subscribe((result: ApolloQueryResult<any>) => {
-        this.rates = result.data && result.data.User;
-        this.loading = result.loading;
-        this.error = result.errors;
-        console.log( this.rates );
-      });
-  }
-
+  // }
 }

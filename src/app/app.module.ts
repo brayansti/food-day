@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -15,6 +15,7 @@ import { Apollo } from 'apollo-angular';
 import { ApolloModule } from 'apollo-angular';
 import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
+import { NavController } from '@ionic/angular';
 //firebase
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from './services/firebase/authentication.service';
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -56,11 +58,24 @@ const uri ="https://api.graph.cool/simple/v1/cjwffcf7f1p0r0139e62i4cth"
 export class AppModule {
   constructor(
     apollo: Apollo,
-    httpLink: HttpLink
+    httpLink: HttpLink,
+    private storage: Storage,
+    private navCtrl: NavController,
   ) { 
     apollo.create({
       link: httpLink.create({ uri }), 
       cache: new InMemoryCache()
     }); 
+    
+    this.storage.get('firebaseId').then((val) => {
+      console.log('firebaseId ON INIT → ' + val);
+      this.checkAutentification(val);
+    });
+
+  }
+  checkAutentification(firebaseId){
+    if(firebaseId){
+      this.navCtrl.navigateForward('/menu/profile');
+    }
   }
 }

@@ -60,10 +60,6 @@ export class MenuPage implements OnInit {
     
   }
 
-  // cerrarSecion() {
-  //   this.navCtrl.navigateForward('/home');
-  // }
-
   logout() {
     this.storage.remove('firebaseId');
     this.storage.remove('firebaseEmail');

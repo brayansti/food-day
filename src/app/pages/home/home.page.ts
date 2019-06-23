@@ -61,11 +61,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.get('firebaseId').then((val) => {
-      console.log('firebaseId ON INIT → ' + val);
-      this.checkAutentification(val);
-    });
-
 
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -90,12 +85,7 @@ export class HomePage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ]
   };
- 
-  checkAutentification(firebaseId){
-    if(firebaseId){
-      this.navCtrl.navigateForward('/menu/profile');
-    }
-  }
+
 
   loginUser(value){
     this.authService.loginUser(value)

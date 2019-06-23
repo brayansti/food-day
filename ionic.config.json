@@ -1,5 +1,7 @@
 {
   "name": "food-day",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

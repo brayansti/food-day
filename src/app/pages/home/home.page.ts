@@ -8,6 +8,8 @@ import { ApolloQueryResult } from 'apollo-client';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../../services/firebase/authentication.service';
+
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -52,11 +54,18 @@ export class HomePage implements OnInit {
 
     private navCtrl: NavController,
     private authService: AuthenticationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private storage: Storage,
 
   ) { }
 
   ngOnInit() {
+
+    this.storage.get('firebaseId').then((val) => {
+      console.log('firebaseId ON INIT → ' + val);
+      this.checkAutentification(val);
+    });
+
 
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -82,6 +91,11 @@ export class HomePage implements OnInit {
     ]
   };
  
+  checkAutentification(firebaseId){
+    if(firebaseId){
+      this.navCtrl.navigateForward('/menu/profile');
+    }
+  }
 
   loginUser(value){
     this.authService.loginUser(value)
@@ -89,6 +103,10 @@ export class HomePage implements OnInit {
       console.log(res);
       this.errorMessage = "";
       this.navCtrl.navigateForward('/menu/profile');
+
+      // ↓↓ Set storage ID ↓↓ 
+      this.storage.set('firebaseId', res.user.uid);
+      this.storage.set('firebaseEmail', res.user.email);
 
     }, err => {
       this.errorMessage = err.message;

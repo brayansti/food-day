@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 
 import { AuthenticationService } from '../../services/firebase/authentication.service';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -42,6 +44,7 @@ export class MenuPage implements OnInit {
   selectedPath = ''; 
 
   constructor(
+    private storage: Storage,
     private router: Router,
     private navCtrl: NavController,
     private authService: AuthenticationService,
@@ -62,6 +65,8 @@ export class MenuPage implements OnInit {
   // }
 
   logout() {
+    this.storage.remove('firebaseId');
+    this.storage.remove('firebaseEmail');
     this.authService.logoutUser()
       .then(res => { 
         console.log(res);

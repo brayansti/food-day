@@ -23,6 +23,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -39,6 +41,7 @@ const uri ="https://api.graph.cool/simple/v1/cjwffcf7f1p0r0139e62i4cth"
     HttpClientModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -48,6 +51,8 @@ const uri ="https://api.graph.cool/simple/v1/cjwffcf7f1p0r0139e62i4cth"
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule {
   constructor(
     apollo: Apollo,

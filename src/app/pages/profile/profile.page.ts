@@ -8,6 +8,8 @@ import gql from 'graphql-tag';
 import { ApolloQueryResult } from 'apollo-client';
 import { AuthenticationService } from '../../services/firebase/authentication.service';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -16,6 +18,7 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
 export class ProfilePage implements OnInit {
   
   constructor(
+    private storage: Storage,
     public alertController: AlertController,
     private apollo: Apollo,
     private navCtrl: NavController,
@@ -71,6 +74,15 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.storage.get('firebaseId').then((val) => {
+      console.log('firebaseId' + val);
+    });
+
+    this.storage.get('firebaseEmail').then( (val) =>{
+      console.log('firebaseEmail' + val);
+    } )
+
     this.apollo
       .watchQuery({
         query: gql`

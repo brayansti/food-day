@@ -18,6 +18,10 @@ const CurrentUserForProfile = gql`
       )
     {
       name
+      addresses{
+        addressDetail1
+        id
+      }
     }
   }
 `;
@@ -48,8 +52,11 @@ export class ProfilePage implements OnInit, OnDestroy {
       },
     })
     .valueChanges.subscribe(({data}) => {
-      this.currentUser = data.User;
-      console.log( data.User );
+      this.currentUser = data["User"];
+      console.log( '↓↓ data ↓↓ ' );
+      console.log( data );
+      console.log( '↓↓ data.User ↓↓ ' );
+      console.log( data["User"] );
       // console.log(this.currentUser)
     });
   }

@@ -75,7 +75,8 @@ export class AppModule {
   }
   checkAutentification(firebaseId){
     if(firebaseId){
-      this.navCtrl.navigateForward('/menu/profile');
+      console.log('Redireccion desde acá');
+      // this.navCtrl.navigateForward('/menu/profile');
     }
   }
 }

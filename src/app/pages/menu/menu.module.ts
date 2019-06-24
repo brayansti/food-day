@@ -31,6 +31,9 @@ const routes: Routes = [
       {
         path: 'credit-detail',
         loadChildren: '../credit-detail/credit-detail.module#CreditDetailPageModule'
+      },
+      { path: 'form-profile',
+        loadChildren: '../form-profile/form-profile.module#FormProfilePageModule'
       }
     ]
   },

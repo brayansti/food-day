@@ -11,279 +11,41 @@
 			Solicita tu crédito
 		</h1>
 	</div>
-	<ion-slides paginationType="bullets" pager="true" [options]="slideOpts">
-		<ion-slide>
-			<form [formGroup]="formStep1" action="" class="slide__content ion-padding">
-				<div class="boxItems">
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Cuanto dinero necesitas?</ion-label>
-						<ion-select formControlName="cuantoNecesitas" cancelText="Cancelar">
-							<ion-select-option value="50000">$50.000</ion-select-option>
-							<ion-select-option value="100000">$100.000</ion-select-option>
-							<ion-select-option value="200000">$200.000</ion-select-option>
-							<ion-select-option value="300000">$300.000</ion-select-option>
-							<ion-select-option value="400000">$400.000</ion-select-option>
-							<ion-select-option value="500000">$500.000</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>En cuantos meses deseas pagar?</ion-label>
-						<ion-select formControlName="cuantosMeses" cancelText="Cancelar">
-							<ion-select-option value="1">1</ion-select-option>
-							<ion-select-option value="2">2</ion-select-option>
-							<ion-select-option value="3">3</ion-select-option>
-							<ion-select-option value="4">4</ion-select-option>
-							<ion-select-option value="5">5</ion-select-option>
-							<ion-select-option value="6">6</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="5" formControlName="requiredInput" placeholder="Para que no necesitas?"></ion-input>
-					</ion-item>
-					<!-- <p *ngIf="formStep1.controls.requiredInput.errors" class="requiredText">Required</p> -->
-				</div>
-				<div class="boxItems">
-					<ion-button [disabled]="formStep1.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
-				</div>
-			</form>
-		</ion-slide>
-		<ion-slide>
-			<form [formGroup]="formStep2" action="" class="slide__content ion-padding">
-				<div class="boxItems">
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="4" formControlName="PrimerNombre" placeholder="Primer nombre"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="4" formControlName="SegundoNombre" placeholder="Segundo nombre"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="4" formControlName="PrimerApellido" placeholder="Primer apellido"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="4" formControlName="Segundopellido" placeholder="Segundo apellido"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-datetime formControlName="FechaNacimiento" placeholder="Fecha de nacimiento" display-format="DD MM, YYYY"></ion-datetime>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Sexo</ion-label>
-						<ion-select formControlName="sexo" cancelText="Cancelar">
-							<ion-select-option value="Masculino">Masculino</ion-select-option>
-							<ion-select-option value="Femenino">Femenino</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Tipo de documeto</ion-label>
-						<ion-select formControlName="tipoDocumento" cancelText="Cancelar">
-							<ion-select-option value="cedula">CC</ion-select-option>
-							<ion-select-option value="pasaporte">Pasaporte</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input type="number" minlength="6" formControlName="NumeroDocumento" placeholder="Número de documento"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input minlength="4" formControlName="Direccion" placeholder="Direccion"></ion-input>
-					</ion-item>
-					<ion-grid>
-						<ion-row>
-							<ion-col>
-								<!-- New Input -->
-								<ion-item>
-									<ion-input placeholder="Torre / Interior"></ion-input>
-								</ion-item>
-							</ion-col>
-							<ion-col>
-								<!-- New Input -->
-								<ion-item>
-									<ion-input placeholder="Apto"></ion-input>
-								</ion-item>
-							</ion-col>
-						</ion-row>
-					</ion-grid>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Departamento</ion-label>
-						<ion-select (ionChange)="loadCities(deptoSelected)" [(ngModel)]="deptoSelected" formControlName="depto" cancelText="Cancelar">
-							<ion-select-option *ngFor="let departamento of dataDeptos" value="{{departamento.id}}">{{departamento.departamento}}</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item [hidden]="!showCitys">
-						<ion-label>Municipio</ion-label>
-						<ion-select formControlName="city" cancelText="Cancelar">
-							<ion-select-option *ngFor="let ciudad of cytySelected.ciudades" value="{{ciudad}}">{{ciudad}}</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<div class="fontTermsConditions">
-							<p>
-								<strong>Términos y condiciones</strong>
-							</p>
-							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor dolorem 
-								sed adipisci nam saepe quisquam ea, maxime, reiciendis, suscipit 
-								repellat cupiditate alias magni culpa corporis nesciunt natus tempore
-								neque laboriosam! Lorem ipsum dolor, sit amet consectetur adipisicing
-								elit. Dolor dolorem 
-								sed adipisci nam saepe quisquam ea, maxime, reiciendis, suscipit 
-								repellat cupiditate alias magni culpa corporis nesciunt natus tempore
-								neque laboriosam!
-							</p>
-						</div>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label> Acepto los términos y condiciones</ion-label>
-						<ion-toggle [(ngModel)]="termsConds" formControlName="terminos" color="secondary"></ion-toggle>
-					</ion-item>
-				</div>
-				<div class="boxItems">
-					<ion-button [disabled]="formStep2.status == 'INVALID' || !termsConds" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
-					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
-				</div>
-			</form>
-		</ion-slide>
-		<ion-slide>
-			<form [formGroup]="formStep3" action="" class="slide__content ion-padding">
-				<div class="boxItems">
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Situación Laboral</ion-label>
-						<ion-select okText="OK" cancelText="Cancelar">
-							<ion-select-option value="brown">Empleado</ion-select-option>
-							<ion-select-option value="blonde">Trabajo por mi cuenta</ion-select-option>
-							<ion-select-option value="black">Tengo un negocio</ion-select-option>
-							<ion-select-option value="red">Jubilado o pensionado</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input placeholder="Nombre enmpresa o negocio"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input placeholder="Que puesto tienes"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input placeholder="Antigüedad en la empresa"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-input placeholder="Teléfono empresa"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Ingresos mensuales libres de impuestos</ion-label>
-						<ion-input type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Otros Ingresos</ion-label>
-						<ion-input type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label> Estas afiliado al sistema de salud</ion-label>
-						<ion-toggle color="secondary"></ion-toggle>
-					</ion-item>
-				</div>
-				<div class="boxItems">
-					<ion-button [disabled]="formStep3.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
-					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
-				</div>
-			</form>
-		</ion-slide>
-		<ion-slide>
-			<form [formGroup]="formStep4" action="" class="slide__content ion-padding">
-				<div class="boxItems">
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Alimentos, salud y ropa</ion-label>
-						<ion-input (focus)="this.select()" [(ngModel)]="modelgastosAlimentos" formControlName="gastosAlimentos" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Arriendo / Alquiler</ion-label>
-						<ion-input [(ngModel)]="modelgastosArriendo" formControlName="gastosArriendo" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Servicios públicos</ion-label>
-						<ion-input [(ngModel)]="modelgastosServicios" formControlName="gastosServicios" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Transporte / Gasolina</ion-label>
-						<ion-input [(ngModel)]="modelgastosTransporte" formControlName="gastosTransporte" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Educación</ion-label>
-						<ion-input [(ngModel)]="modelgastosEducacion" formControlName="gastosEducacion" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Recreación (personal o familiar)</ion-label>
-						<ion-input [(ngModel)]="modelgastosRecreacion" formControlName="gastosRecreacion" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Tarjetas de credito / Deudas</ion-label>
-						<ion-input [(ngModel)]="modelgastosTarjetas" formControlName="gastosTarjetas" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Seguros</ion-label>
-						<ion-input [(ngModel)]="modelgastosSeguros" formControlName="gastosSeguros" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label position="floating">Otros gastos</ion-label>
-						<ion-input [(ngModel)]="modelgastosOtros" formControlName="gastosOtros" type="number" placeholder="$"></ion-input>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<ion-label>Cuantas personas que depende de ti?</ion-label>
-						<ion-select formControlName="personasDependen" cancelText="Cancelar">
-							<ion-select-option value="0">Ninguna</ion-select-option>
-							<ion-select-option value="1">1</ion-select-option>
-							<ion-select-option value="2">2</ion-select-option>
-							<ion-select-option value="3">3</ion-select-option>
-							<ion-select-option value="4">4</ion-select-option>
-							<ion-select-option value="5">5</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<!-- New Input -->
-					<ion-item>
-						<div class="boxTotalMoney">
-							<p>TOTAL: </p>
-							<ion-text color="primary">
-								{{ (modelgastosAlimentos + modelgastosArriendo + modelgastosServicios + modelgastosTransporte + modelgastosEducacion + modelgastosRecreacion + modelgastosTarjetas + modelgastosSeguros + modelgastosOtros) | currency:'$' : 'symbol':'0.0-0'}}
-							</ion-text>
-						</div>
-					</ion-item>
-				</div>
-				<div class="boxItems">
-					<ion-button [disabled]="formStep4.status == 'INVALID'" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
-					<ion-button color="primary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
-				</div>
-			</form>
-		</ion-slide>
-	</ion-slides>
+	<form [formGroup]="formStep1" action="" class="slide__content ion-padding">
+		<div class="boxItems">
+			<!-- New Input -->
+			<ion-item>
+				<ion-label>Cuanto dinero necesitas?</ion-label>
+				<ion-select formControlName="cuantoNecesitas" cancelText="Cancelar">
+					<ion-select-option value="50000">$50.000</ion-select-option>
+					<ion-select-option value="100000">$100.000</ion-select-option>
+					<ion-select-option value="200000">$200.000</ion-select-option>
+					<ion-select-option value="300000">$300.000</ion-select-option>
+					<ion-select-option value="400000">$400.000</ion-select-option>
+					<ion-select-option value="500000">$500.000</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<!-- New Input -->
+			<ion-item>
+				<ion-label>En cuantos meses deseas pagar?</ion-label>
+				<ion-select formControlName="cuantosMeses" cancelText="Cancelar">
+					<ion-select-option value="1">1</ion-select-option>
+					<ion-select-option value="2">2</ion-select-option>
+					<ion-select-option value="3">3</ion-select-option>
+					<ion-select-option value="4">4</ion-select-option>
+					<ion-select-option value="5">5</ion-select-option>
+					<ion-select-option value="6">6</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<!-- New Input -->
+			<ion-item>
+				<ion-input minlength="5" formControlName="requiredInput" placeholder="Para que no necesitas?"></ion-input>
+			</ion-item>
+			<!-- <p *ngIf="formStep1.controls.requiredInput.errors" class="requiredText">Required</p> -->
+		</div>
+		<div class="boxItems">
+			<ion-button [disabled]="formStep1.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+		</div>
+	</form>
 
 </ion-content>

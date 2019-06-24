@@ -21,6 +21,28 @@ mutation{
 }
 
 
+# ↓↓↓ UpdateUser USER ↓↓↓
+mutation{
+  updateUser(
+    id: "cjxan9qrs07cg01364m1g93sz"
+    birdDate: "2019-06-22T15:53:21.000Z"
+    cellPhone: "3122266543"
+    documentNumber: "123456"
+    documentType: "CC"
+    education: "Ninguna"
+    email: "test@hmail.com"
+    gender: "F"
+    lastName: "Barreto"
+    lastNameTwo: "Posada"
+    name: "Maria"
+    nameTwo: "Paula"
+    phone: "3122266543"
+  ){
+		updatedAt,
+  }
+}
+
+
 # ↓↓↓ Create address with user relation ↓↓↓
 mutation{
   createAddress(

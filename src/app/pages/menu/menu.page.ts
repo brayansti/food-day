@@ -38,6 +38,11 @@ export class MenuPage implements OnInit {
       title: 'Detalle',
       url: '/menu/credit-detail',
       icon: 'list'
+    },
+    {
+      title: 'Form Profile',
+      url: '/menu/form-profile',
+      icon: 'person'
     }
   ];
 

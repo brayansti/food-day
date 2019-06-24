@@ -4,14 +4,38 @@ import { IonSlides } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
+// ↓↓↓↓ Apollo ↓↓↓↓
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
 
+const createUser = gql`
+	mutation{
+		updateUser(
+			id: "cjxan9qrs07cg01364m1g93sz"
+			name:"Juan"
+			lastName: "Bien"
+			nameTwo: "Lorenzo"
+			lastNameTwo:"Posada"
+			birdDate: "2019-06-22T15:53:21.000Z"
+			documentType: 1
+			documentNumber: "123456789"
+			phone: 123654
+			cellPhone: "3122251546"
+			education: "maestria"
+			gender: 1
+		){
+			updatedAt,
+		}
+	}
+`;
 
 @Component({
-	selector: 'app-form-borrower',
-	templateUrl: './form-borrower.page.html',
-	styleUrls: ['./form-borrower.page.scss'],
+  selector: 'app-form-profile',
+  templateUrl: './form-profile.page.html',
+  styleUrls: ['./form-profile.page.scss'],
 })
-export class FormBorrowerPage implements OnInit {
+export class FormProfilePage implements OnInit {
+
 	@ViewChild(IonSlides) productSlider: IonSlides;
 
 	dataDeptos = [
@@ -1338,14 +1362,50 @@ export class FormBorrowerPage implements OnInit {
 
 	// Validadiones
 	// submitted = false;
-	formStep1: FormGroup;
+	formStep2: FormGroup;
+	formStep3: FormGroup;
+	formStep4: FormGroup;
 
+	modelgastosAlimentos : number = null;
+	modelgastosArriendo : number = null;
+	modelgastosServicios : number = null;
+	modelgastosTransporte : number = null;
+	modelgastosEducacion : number = null;
+	modelgastosRecreacion : number = null;
+	modelgastosTarjetas : number = null;
+	modelgastosSeguros : number = null;
+	modelgastosOtros : number = null;
+
+	
 
 	ngOnInit() {
-        this.formStep1 = this.formBuilder.group({
-            cuantoNecesitas: ['', Validators.required],
-            cuantosMeses: ['', Validators.required],
-            requiredInput: ['', Validators.required],
+        this.formStep2 = this.formBuilder.group({
+			PrimerNombre: ['' , Validators.required],
+			SegundoNombre: ['' , Validators.required],
+			PrimerApellido: ['' , Validators.required],
+			Segundopellido: ['' , Validators.required],
+			FechaNacimiento: ['' , Validators.required],
+			sexo: ['' , Validators.required],
+			tipoDocumento: ['' , Validators.required],
+			NumeroDocumento: ['' , Validators.required],
+			Direccion: ['' , Validators.required],
+			depto: ['' , Validators.required],
+			city: ['' , Validators.required],
+			terminos: ['' , Validators.required],
+		});
+        this.formStep3 = this.formBuilder.group({
+		});
+        this.formStep4 = this.formBuilder.group({
+			gastosAlimentos: ['' , Validators.required],
+			gastosArriendo: ['' , Validators.required],
+			gastosServicios: ['' , Validators.required],
+			gastosTransporte: ['' , Validators.required],
+			gastosEducacion: ['' , Validators.required],
+			gastosRecreacion: ['' , Validators.required],
+			gastosTarjetas: ['' , Validators.required],
+			gastosSeguros: ['' , Validators.required],
+			gastosOtros: ['' , Validators.required],
+			personasDependen: ['' , Validators.required],
 		});
 	}
 
@@ -1361,6 +1421,5 @@ export class FormBorrowerPage implements OnInit {
     //     }
     //     alert('SUCCESS!!');
     // }
-
 
 }

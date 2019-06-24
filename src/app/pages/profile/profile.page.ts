@@ -11,8 +11,8 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
 
 import { Storage } from '@ionic/storage';
 
-const CurrentUserForProfile = gql`
-  query CurrentUserForProfile($idFirebase: String!) {
+const CurrentUserForFirebaseId = gql`
+  query CurrentUserForFirebaseId($idFirebase: String!) {
     User(
         idFirebase : $idFirebase
       )
@@ -46,17 +46,13 @@ export class ProfilePage implements OnInit, OnDestroy {
   getUserById( firebaseId:string ){
     this.querySubscription = this.apollo
     .watchQuery({
-      query: CurrentUserForProfile,
+      query: CurrentUserForFirebaseId,
       variables: {
         idFirebase: firebaseId,
       },
     })
     .valueChanges.subscribe(({data}) => {
       this.currentUser = data["User"];
-      console.log( '↓↓ data ↓↓ ' );
-      console.log( data );
-      console.log( '↓↓ data.User ↓↓ ' );
-      console.log( data["User"] );
       // console.log(this.currentUser)
     });
   }

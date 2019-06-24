@@ -60,8 +60,6 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-
-
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,

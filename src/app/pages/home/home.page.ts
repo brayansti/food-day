@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+
+import { Subscription } from 'rxjs';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -10,12 +12,25 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthenticationService } from '../../services/firebase/authentication.service';
 
 import { Storage } from '@ionic/storage';
+
+const CurrentUserForFirebaseId = gql`
+  query CurrentUserForFirebaseId($idFirebase: String!) {
+    User(
+        idFirebase : $idFirebase
+      )
+    {
+      id
+    }
+  }
+`;
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit , OnDestroy {
+  private querySubscription: Subscription;
   // rates: any[];
   // loading = true;
   // error: any;
@@ -56,8 +71,22 @@ export class HomePage implements OnInit {
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
     private storage: Storage,
+    private apollo: Apollo,
 
   ) { }
+
+  getUserByFirebaseId( firebaseId:string ){
+    this.querySubscription = this.apollo
+    .watchQuery({
+      query: CurrentUserForFirebaseId,
+      variables: {
+        idFirebase: firebaseId,
+      },
+    })
+    .valueChanges.subscribe(({data}) => {
+      this.storage.set('graphId', (data['User'].id) );
+    });
+  }
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
@@ -70,6 +99,9 @@ export class HomePage implements OnInit {
         Validators.required
       ])),
     });
+  }
+  ngOnDestroy(){
+    this.querySubscription.unsubscribe();
   }
 
 
@@ -95,6 +127,10 @@ export class HomePage implements OnInit {
       // ↓↓ Set storage ID ↓↓ 
       this.storage.set('firebaseId', res.user.uid);
       this.storage.set('firebaseEmail', res.user.email);
+
+      setTimeout(()=>{
+        this.getUserByFirebaseId( res.user.uid );
+      } , 500)
 
     }, err => {
       this.errorMessage = err.message;

@@ -66,6 +66,7 @@ export class MenuPage implements OnInit {
   }
 
   logout() {
+    this.storage.remove('graphId');
     this.storage.remove('firebaseId');
     this.storage.remove('firebaseEmail');
     this.authService.logoutUser()
@@ -77,7 +78,5 @@ export class MenuPage implements OnInit {
         console.log(error);
       })
   }
-
-
 
 }

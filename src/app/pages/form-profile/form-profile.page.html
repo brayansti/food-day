@@ -64,13 +64,13 @@
 							<ion-col>
 								<!-- New Input -->
 								<ion-item>
-									<ion-input placeholder="Torre / Interior"></ion-input>
+									<ion-input formControlName="Direcciondetail1" placeholder="Torre / Interior"></ion-input>
 								</ion-item>
 							</ion-col>
 							<ion-col>
 								<!-- New Input -->
 								<ion-item>
-									<ion-input placeholder="Apto"></ion-input>
+									<ion-input formControlName="Direcciondetail2" placeholder="Apto"></ion-input>
 								</ion-item>
 							</ion-col>
 						</ion-row>
@@ -116,6 +116,7 @@
 				<div class="boxItems">
 					<ion-button [disabled]="formStep2.status == 'INVALID' || !termsConds" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 					<ion-button color="secondary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
+					<ion-button color="danger" expand="block" (click)="checkApp();">CHECKS</ion-button>
 				</div>
 			</form>
 		</ion-slide>

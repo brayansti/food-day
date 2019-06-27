@@ -18,6 +18,7 @@ const CurrentUserForFirebaseId = gql`
       )
     {
       name
+      id
       addresses{
         addressDetail1
         id
@@ -53,7 +54,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     })
     .valueChanges.subscribe(({data}) => {
       this.currentUser = data["User"];
-      // console.log(this.currentUser)
+      console.log(this.currentUser)
     });
   }
 

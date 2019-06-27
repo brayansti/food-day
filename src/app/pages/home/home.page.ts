@@ -62,6 +62,7 @@ export class HomePage implements OnInit , OnDestroy {
   //       this.error = result.errors;
   //     });
   // }
+
   validations_form: FormGroup;
   errorMessage: string = '';
 

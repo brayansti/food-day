@@ -1,32 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Subscription } from 'rxjs';
+
 import { IonSlides } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
+
+import { Storage } from '@ionic/storage';
 
 // ↓↓↓↓ Apollo ↓↓↓↓
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-const createUser = gql`
-	mutation{
-		updateUser(
-			id: "cjxan9qrs07cg01364m1g93sz"
-			name:"Juan"
-			lastName: "Bien"
-			nameTwo: "Lorenzo"
-			lastNameTwo:"Posada"
-			birdDate: "2019-06-22T15:53:21.000Z"
-			documentType: 1
-			documentNumber: "123456789"
-			phone: 123654
-			cellPhone: "3122251546"
-			education: "maestria"
-			gender: 1
-		){
-			updatedAt,
-		}
+
+const updateUser = gql`
+mutation(
+	$id: ID!
+	$birdDate: String
+	$cellPhone: String
+	$documentNumber: String
+	$documentType: String
+	$education: String
+	$email: String
+	$gender: String
+	$lastName: String
+	$lastNameTwo: String
+	$name: String
+	$nameTwo: String
+	$phone: String
+	
+	$address: String!
+	$addressDetail1: String 
+	$addressDetail2: String 
+	$country: String!
+	$city: String!
+  ){
+	updateUser(
+	  id: $id
+	  birdDate: $birdDate
+	  cellPhone: $cellPhone
+	  documentNumber: $documentNumber
+	  documentType: $documentType
+	  education: $education
+	  email: $email
+	  gender: $gender
+	  lastName: $lastName
+	  lastNameTwo: $lastNameTwo
+	  name: $name
+	  nameTwo: $nameTwo
+	  phone: $phone
+	)
+	{
+		  updatedAt,
 	}
+	createAddress(
+	  userId : $id
+	  address: $address
+	  addressDetail1: $addressDetail1
+	  addressDetail2: $addressDetail2
+	  country: $country
+	  city: $city
+	){
+	  id
+	}
+  }  
 `;
 
 @Component({
@@ -1346,7 +1383,9 @@ export class FormProfilePage implements OnInit {
 	}
 
 	constructor(
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private apollo: Apollo,
+		private storage: Storage,
 	) {}
 
 	slideOpts = {
@@ -1376,10 +1415,14 @@ export class FormProfilePage implements OnInit {
 	modelgastosSeguros : number = null;
 	modelgastosOtros : number = null;
 
-	
+	idGraphQl = "";
 
 	ngOnInit() {
-        this.formStep2 = this.formBuilder.group({
+		this.storage.get('graphId').then((val) => {
+			this.idGraphQl = val;
+		});
+		
+    this.formStep2 = this.formBuilder.group({
 			PrimerNombre: ['' , Validators.required],
 			SegundoNombre: ['' , Validators.required],
 			PrimerApellido: ['' , Validators.required],
@@ -1389,13 +1432,15 @@ export class FormProfilePage implements OnInit {
 			tipoDocumento: ['' , Validators.required],
 			NumeroDocumento: ['' , Validators.required],
 			Direccion: ['' , Validators.required],
+			Direcciondetail1: ['' , Validators.nullValidator],
+			Direcciondetail2: ['' , Validators.nullValidator],
 			depto: ['' , Validators.required],
 			city: ['' , Validators.required],
 			terminos: ['' , Validators.required],
 		});
-        this.formStep3 = this.formBuilder.group({
+		this.formStep3 = this.formBuilder.group({
 		});
-        this.formStep4 = this.formBuilder.group({
+    this.formStep4 = this.formBuilder.group({
 			gastosAlimentos: ['' , Validators.required],
 			gastosArriendo: ['' , Validators.required],
 			gastosServicios: ['' , Validators.required],
@@ -1420,6 +1465,43 @@ export class FormProfilePage implements OnInit {
     //         return;
     //     }
     //     alert('SUCCESS!!');
-    // }
+	// }
+
+	updateUser(){
+
+    this.apollo.mutate({
+      mutation: updateUser,
+      variables: {
+				id : this.idGraphQl,
+				birdDate : this.formStep2['value'].FechaNacimiento,
+				documentNumber : (this.formStep2['value'].NumeroDocumento).toString(),
+				documentType : this.formStep2['value'].tipoDocumento,
+				gender : this.formStep2['value'].sexo,
+				lastName : this.formStep2['value'].PrimerApellido,
+				lastNameTwo : this.formStep2['value'].Segundopellido,
+				name : this.formStep2['value'].PrimerNombre,
+				nameTwo : this.formStep2['value'].SegundoNombre,
+				address : this.formStep2['value'].Direccion,
+				addressDetail1 : this.formStep2['value'].Direcciondetail1,
+				addressDetail2 : this.formStep2['value'].Direcciondetail2,
+				city : this.formStep2['value'].city,
+				country : "Colombia",
+				// cellPhone : this.formStep2.xxxxxxx,
+				// education : this.formStep2.xxxxxxx,
+				// email : this.formStep2.xxxxxxx,
+				// phone : this.formStep2.xxxxxxx,
+      }
+    }).subscribe( ({data}) =>{
+      console.log(data);
+    },(error) =>{
+      console.log(error);
+		});
+
+	}
+	
+	checkApp(){
+		console.log(this.formStep2.value);
+		this.updateUser();
+	}
 
 }

@@ -14,56 +14,109 @@ import gql from 'graphql-tag';
 
 
 const updateUser = gql`
-mutation(
-	$id: ID!
-	$birdDate: String
-	$cellPhone: String
-	$documentNumber: String
-	$documentType: String
-	$education: String
-	$email: String
-	$gender: String
-	$lastName: String
-	$lastNameTwo: String
-	$name: String
-	$nameTwo: String
-	$phone: String
-	
-	$address: String!
-	$addressDetail1: String 
-	$addressDetail2: String 
-	$country: String!
-	$city: String!
-  ){
-	updateUser(
-	  id: $id
-	  birdDate: $birdDate
-	  cellPhone: $cellPhone
-	  documentNumber: $documentNumber
-	  documentType: $documentType
-	  education: $education
-	  email: $email
-	  gender: $gender
-	  lastName: $lastName
-	  lastNameTwo: $lastNameTwo
-	  name: $name
-	  nameTwo: $nameTwo
-	  phone: $phone
-	)
-	{
-		  updatedAt,
-	}
-	createAddress(
-	  userId : $id
-	  address: $address
-	  addressDetail1: $addressDetail1
-	  addressDetail2: $addressDetail2
-	  country: $country
-	  city: $city
+	mutation(
+		$id: ID!
+		$birdDate: String
+		$cellPhone: String
+		$documentNumber: String
+		$documentType: String
+		$education: String
+		$email: String
+		$gender: String
+		$lastName: String
+		$lastNameTwo: String
+		$name: String
+		$nameTwo: String
+		$phone: String
+		
+		$address: String!
+		$addressDetail1: String 
+		$addressDetail2: String 
+		$country: String!
+		$city: String!
+		
+		$laboralState: String!
+		$opupation: String!
+		$companyName: String
+		$companyAntique: String
+		$companyPhone: String
+		$incomeWork: String
+		$incomeAnotHer: String
+		$totalIncome: String
+		
+		$expenseFood: String
+		$expenseRent: String
+		$expenseServices: String
+		$extenseTransport: String
+		$expenseEducation: String
+		$expenseRecreation: String
+		$expenseCreditCard: String
+		$extenseInsurance: String
+		$expenseAnother: String
+		$totalExtense: String
+		$economicDependents: Int
 	){
-	  id
+		updateUser(
+			id: $id
+			birdDate: $birdDate
+			cellPhone: $cellPhone
+			documentNumber: $documentNumber
+			documentType: $documentType
+			education: $education
+			email: $email
+			gender: $gender
+			lastName: $lastName
+			lastNameTwo: $lastNameTwo
+			name: $name
+			nameTwo: $nameTwo
+			phone: $phone
+		)
+		{
+			updatedAt,
+		}
+		createAddress(
+			userId : $id
+			address: $address
+			addressDetail1: $addressDetail1
+			addressDetail2: $addressDetail2
+			country: $country
+			city: $city
+		){
+			id
+		}
+
+
+
+		createCurrentOcupation(
+			userId: $id
+			laboralState: $laboralState
+			opupation: $opupation
+			companyName: $companyName
+			companyAntique: $companyAntique
+			companyPhone: $companyPhone
+			incomeWork: $incomeWork
+			incomeAnotHer: $incomeAnotHer
+			totalIncome: $totalIncome
+		){
+			id
+		}
+		createExpenses(
+			userId: $id
+			expenseFood: $expenseFood
+			expenseRent: $expenseRent
+			expenseServices: $expenseServices
+			extenseTransport: $extenseTransport
+			expenseEducation: $expenseEducation
+			expenseRecreation: $expenseRecreation
+			expenseCreditCard: $expenseCreditCard
+			extenseInsurance: $extenseInsurance
+			expenseAnother: $expenseAnother
+			totalExtense: $totalExtense
+			economicDependents: $economicDependents
+		){
+			id
+		}
 	}
-  }  
 `;
 
 @Component({
@@ -1389,7 +1442,7 @@ export class FormProfilePage implements OnInit {
 	) {}
 
 	slideOpts = {
-		// initialSlide: 0,
+		initialSlide: 0,
 		allowTouchMove: false
 	};
 	nextIonSlide(){
@@ -1439,17 +1492,24 @@ export class FormProfilePage implements OnInit {
 			terminos: ['' , Validators.required],
 		});
 		this.formStep3 = this.formBuilder.group({
+			SituacionLaboral: ['' , Validators.required],
+			NombreEmpresa: ['' , Validators.nullValidator],
+			PuestoEmpresa: ['' , Validators.nullValidator],
+			AntiguedadEmpresa: ['' , Validators.nullValidator],
+			TelefonoEmpresa: ['' , Validators.nullValidator],
+			IngresosMensuales: ['' , Validators.nullValidator],
+			OtrosIngresos: ['' , Validators.nullValidator],
 		});
     this.formStep4 = this.formBuilder.group({
-			gastosAlimentos: ['' , Validators.required],
-			gastosArriendo: ['' , Validators.required],
-			gastosServicios: ['' , Validators.required],
-			gastosTransporte: ['' , Validators.required],
-			gastosEducacion: ['' , Validators.required],
-			gastosRecreacion: ['' , Validators.required],
-			gastosTarjetas: ['' , Validators.required],
-			gastosSeguros: ['' , Validators.required],
-			gastosOtros: ['' , Validators.required],
+			gastosAlimentos: ['' , Validators.nullValidator],
+			gastosArriendo: ['' , Validators.nullValidator],
+			gastosServicios: ['' , Validators.nullValidator],
+			gastosTransporte: ['' , Validators.nullValidator],
+			gastosEducacion: ['' , Validators.nullValidator],
+			gastosRecreacion: ['' , Validators.nullValidator],
+			gastosTarjetas: ['' , Validators.nullValidator],
+			gastosSeguros: ['' , Validators.nullValidator],
+			gastosOtros: ['' , Validators.nullValidator],
 			personasDependen: ['' , Validators.required],
 		});
 	}
@@ -1490,7 +1550,30 @@ export class FormProfilePage implements OnInit {
 				// education : this.formStep2.xxxxxxx,
 				// email : this.formStep2.xxxxxxx,
 				// phone : this.formStep2.xxxxxxx,
-      }
+				// Form Step 2
+				laboralState : this.formStep3['value'].SituacionLaboral,
+				opupation : this.formStep3['value'].PuestoEmpresa,
+				companyName : this.formStep3['value'].NombreEmpresa,
+				companyAntique : this.formStep3['value'].AntiguedadEmpresa,
+				companyPhone : (this.formStep3['value'].TelefonoEmpresa).toString(),
+				incomeWork : (this.formStep3['value'].IngresosMensuales).toString(),
+				incomeAnotHer : (this.formStep3['value'].OtrosIngresos).toString(),
+				totalIncome : ( (this.formStep3['value'].IngresosMensuales) + (this.formStep3['value'].OtrosIngresos) ).toString(),
+
+				// Form Step 3
+				expenseFood : (this.formStep4['value'].gastosAlimentos).toString(), 
+				expenseRent : (this.formStep4['value'].gastosArriendo).toString(), 
+				expenseServices : (this.formStep4['value'].gastosServicios).toString(), 
+				extenseTransport : (this.formStep4['value'].gastosTransporte).toString(), 
+				expenseEducation : (this.formStep4['value'].gastosEducacion).toString(), 
+				expenseRecreation : (this.formStep4['value'].gastosRecreacion).toString(), 
+				expenseCreditCard : (this.formStep4['value'].gastosTarjetas).toString(), 
+				extenseInsurance : (this.formStep4['value'].gastosSeguros).toString(), 
+				expenseAnother : (this.formStep4['value'].gastosOtros).toString(), 
+				economicDependents : (this.formStep4['value'].personasDependen).toString(),
+				totalExtense : (this.formStep4['value'].gastosAlimentos + this.formStep4['value'].gastosArriendo + this.formStep4['value'].gastosServicios + this.formStep4['value'].gastosTransporte + this.formStep4['value'].gastosEducacion + this.formStep4['value'].gastosRecreacion + this.formStep4['value'].gastosTarjetas + this.formStep4['value'].gastosSeguros + this.formStep4['value'].gastosOtros ).toString(),
+			}
+
     }).subscribe( ({data}) =>{
       console.log(data);
     },(error) =>{
@@ -1500,7 +1583,10 @@ export class FormProfilePage implements OnInit {
 	}
 	
 	checkApp(){
-		console.log(this.formStep2.value);
+		console.log(this.formStep4.value);
+	}
+
+	sendAllData(){
 		this.updateUser();
 	}
 

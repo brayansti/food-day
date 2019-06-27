@@ -116,7 +116,6 @@
 				<div class="boxItems">
 					<ion-button [disabled]="formStep2.status == 'INVALID' || !termsConds" color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
 					<ion-button color="secondary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
-					<ion-button color="danger" expand="block" (click)="checkApp();">CHECKS</ion-button>
 				</div>
 			</form>
 		</ion-slide>
@@ -126,7 +125,7 @@
 					<!-- New Input -->
 					<ion-item>
 						<ion-label>Situación Laboral</ion-label>
-						<ion-select okText="OK" cancelText="Cancelar">
+						<ion-select formControlName="SituacionLaboral" okText="OK" cancelText="Cancelar">
 							<ion-select-option value="brown">Empleado</ion-select-option>
 							<ion-select-option value="blonde">Trabajo por mi cuenta</ion-select-option>
 							<ion-select-option value="black">Tengo un negocio</ion-select-option>
@@ -135,29 +134,29 @@
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Nombre enmpresa o negocio"></ion-input>
+						<ion-input formControlName="NombreEmpresa" placeholder="Nombre enmpresa o negocio"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Que puesto tienes"></ion-input>
+						<ion-input formControlName="PuestoEmpresa" placeholder="Que puesto tienes"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Antigüedad en la empresa"></ion-input>
+						<ion-input formControlName="AntiguedadEmpresa" placeholder="Antigüedad en la empresa"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
-						<ion-input placeholder="Teléfono empresa"></ion-input>
+						<ion-input formControlName="TelefonoEmpresa" placeholder="Teléfono empresa"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
 						<ion-label position="floating">Ingresos mensuales libres de impuestos</ion-label>
-						<ion-input type="number" placeholder="$"></ion-input>
+						<ion-input formControlName="IngresosMensuales" type="number" placeholder="$"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
 						<ion-label position="floating">Otros Ingresos</ion-label>
-						<ion-input type="number" placeholder="$"></ion-input>
+						<ion-input formControlName="OtrosIngresos" type="number" placeholder="$"></ion-input>
 					</ion-item>
 					<!-- New Input -->
 					<ion-item>
@@ -242,8 +241,9 @@
 					</ion-item>
 				</div>
 				<div class="boxItems">
-					<ion-button [disabled]="formStep4.status == 'INVALID'" color="primary" expand="block" (click)="nextIonSlide();">Guardar</ion-button>
+					<ion-button [disabled]="formStep4.status == 'INVALID'" color="primary" expand="block" (click)="sendAllData();">Guardar</ion-button>
 					<ion-button color="secondary" expand="block" (click)="prevIonSlide();">Anterior</ion-button>
+					<!-- <ion-button color="danger" expand="block" (click)="checkApp();">CHECKS</ion-button> -->
 				</div>
 			</form>
 		</ion-slide>

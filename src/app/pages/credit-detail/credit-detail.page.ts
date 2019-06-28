@@ -20,6 +20,7 @@ const creditRequest = gql`
       monthlyPayment
       createdAt
       reasonCredit
+      creditState
       user{
         name
         lastName
@@ -58,6 +59,7 @@ export class CreditDetailPage implements OnInit {
 
   idCredit = this.route.snapshot.paramMap.get('id');
   userAdmin:boolean;
+  dataCredit:any;
 
   constructor(
     private route: ActivatedRoute,
@@ -83,7 +85,8 @@ export class CreditDetailPage implements OnInit {
     })
     .valueChanges.subscribe(({data}) => {
       // this.dataCredits = data['allCreditRequestses'];
-      console.log(data);
+      this.dataCredit = data['CreditRequests'];
+      console.log( this.dataCredit );
     });
   }
 
@@ -95,6 +98,7 @@ export class CreditDetailPage implements OnInit {
       }
     }).subscribe( ({data}) =>{
       console.log(data);
+      window.location.reload();
     },(error) =>{
       console.log(error);
     });

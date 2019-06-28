@@ -1397,6 +1397,7 @@ export class FormBorrowerPage implements OnInit {
 
 		}).subscribe( ({data}) =>{
 			console.log(data);
+			window.location.reload();
 		},(error) =>{
 			console.log(error);
 		});

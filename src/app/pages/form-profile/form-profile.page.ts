@@ -1475,7 +1475,7 @@ export class FormProfilePage implements OnInit {
 			this.idGraphQl = val;
 		});
 		
-    this.formStep2 = this.formBuilder.group({
+    	this.formStep2 = this.formBuilder.group({
 			PrimerNombre: ['' , Validators.required],
 			SegundoNombre: ['' , Validators.required],
 			PrimerApellido: ['' , Validators.required],
@@ -1529,9 +1529,9 @@ export class FormProfilePage implements OnInit {
 
 	updateUser(){
 
-    this.apollo.mutate({
-      mutation: updateUser,
-      variables: {
+		this.apollo.mutate({
+		mutation: updateUser,
+		variables: {
 				id : this.idGraphQl,
 				birdDate : this.formStep2['value'].FechaNacimiento,
 				documentNumber : (this.formStep2['value'].NumeroDocumento).toString(),
@@ -1574,10 +1574,10 @@ export class FormProfilePage implements OnInit {
 				totalExtense : (this.formStep4['value'].gastosAlimentos + this.formStep4['value'].gastosArriendo + this.formStep4['value'].gastosServicios + this.formStep4['value'].gastosTransporte + this.formStep4['value'].gastosEducacion + this.formStep4['value'].gastosRecreacion + this.formStep4['value'].gastosTarjetas + this.formStep4['value'].gastosSeguros + this.formStep4['value'].gastosOtros ).toString(),
 			}
 
-    }).subscribe( ({data}) =>{
-      console.log(data);
-    },(error) =>{
-      console.log(error);
+		}).subscribe( ({data}) =>{
+			console.log(data);
+		},(error) =>{
+			console.log(error);
 		});
 
 	}

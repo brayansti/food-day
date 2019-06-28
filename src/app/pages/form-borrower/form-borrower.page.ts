@@ -4,6 +4,29 @@ import { IonSlides } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 
+import { Storage } from '@ionic/storage';
+
+// ↓↓↓↓ Apollo ↓↓↓↓
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+
+const createCreditRequest = gql`
+	mutation(
+			$id: ID!
+			$creditValue: String!
+			$monthlyPayment: String
+			$reasonCredit: String
+		){
+			createCreditRequests(
+			userId: $id
+			creditValue: $creditValue
+			monthlyPayment: $monthlyPayment
+			reasonCredit: $reasonCredit
+		){
+			id
+		}
+	}
+`
 
 
 @Component({
@@ -1322,7 +1345,9 @@ export class FormBorrowerPage implements OnInit {
 	}
 
 	constructor(
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private apollo: Apollo,
+		private storage: Storage,
 	) {}
 
 	slideOpts = {
@@ -1340,12 +1365,17 @@ export class FormBorrowerPage implements OnInit {
 	// submitted = false;
 	formStep1: FormGroup;
 
+	idGraphQl = "";
 
 	ngOnInit() {
         this.formStep1 = this.formBuilder.group({
             cuantoNecesitas: ['', Validators.required],
             cuantosMeses: ['', Validators.required],
             requiredInput: ['', Validators.required],
+		});
+
+		this.storage.get('graphId').then((val) => {
+			this.idGraphQl = val;
 		});
 	}
 
@@ -1354,13 +1384,28 @@ export class FormBorrowerPage implements OnInit {
 		return Number(num);
 	}
 
-	// onSubmit() {
-    //     this.submitted = true;
-    //     if (this.registerForm.invalid) {
-    //         return;
-    //     }
-    //     alert('SUCCESS!!');
-    // }
+	createCreditRequest(){
+
+		this.apollo.mutate({
+		mutation: createCreditRequest,
+		variables: {
+			id : this.idGraphQl,
+			creditValue : this.formStep1['value'].cuantoNecesitas,
+			monthlyPayment : this.formStep1['value'].cuantosMeses,
+			reasonCredit : this.formStep1['value'].requiredInput,
+		}
+
+		}).subscribe( ({data}) =>{
+			console.log(data);
+		},(error) =>{
+			console.log(error);
+		});
+
+	}
+
+	sendData(){
+		this.createCreditRequest();
+	}
 
 
 }

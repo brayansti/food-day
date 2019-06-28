@@ -44,7 +44,7 @@
 			<!-- <p *ngIf="formStep1.controls.requiredInput.errors" class="requiredText">Required</p> -->
 		</div>
 		<div class="boxItems">
-			<ion-button [disabled]="formStep1.status == 'INVALID' " color="primary" expand="block" (click)="nextIonSlide();">Continuar</ion-button>
+			<ion-button [disabled]="formStep1.status == 'INVALID' " color="primary" expand="block" (click)="sendData();">Enviar</ion-button>
 		</div>
 	</form>
 

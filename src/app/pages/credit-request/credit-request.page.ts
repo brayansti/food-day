@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
 
 import { Apollo } from 'apollo-angular';
@@ -8,6 +10,7 @@ import gql from 'graphql-tag';
 const creditRequest = gql`
   query {
     allCreditRequestses{
+      id
       creditValue
       user{
         name
@@ -30,6 +33,7 @@ export class CreditRequestPage implements OnInit {
 
   constructor(
     private apollo: Apollo,
+    public route: Router
   ) { }
 
   ngOnInit() {
@@ -43,12 +47,13 @@ export class CreditRequestPage implements OnInit {
     })
     .valueChanges.subscribe(({data}) => {
       this.dataCredits = data['allCreditRequestses'];
-      // console.log(data);
+      console.log(data);
     });
   }
 
-  seeDetaill(id:number){
-    console.log(id);
+  seeDetaill(creditId:string){
+    console.log(creditId);
+    this.route.navigate([`/menu/credit-detail/${creditId}`])
   }
 
 }

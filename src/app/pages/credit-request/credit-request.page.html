@@ -18,7 +18,7 @@
 				{{credit.user.name}} {{credit.user.lastName}}
 			</ion-label>
 			<ion-input color="primary" [disabled]="true" value="$ {{credit.creditValue}}"></ion-input>
-			<ion-icon (click)="seeDetaill('1')" color="secondary" name="arrow-dropright-circle"></ion-icon>
+			<ion-icon (click)="seeDetaill(credit.id)" color="secondary" name="arrow-dropright-circle"></ion-icon>
 		</ion-item>
 	</div>
 </ion-content>

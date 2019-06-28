@@ -19,9 +19,24 @@ const CurrentUserForFirebaseId = gql`
     {
       name
       id
+      name
+      nameTwo
+      lastName
+      lastNameTwo
+      cellPhone
+      email
+      gender
       addresses{
-        addressDetail1
         id
+        country
+        city
+        address
+        addressDetail1
+        addressDetail2
+      }
+      creditRequestses{
+        creditValue
+        creditState
       }
     }
   }

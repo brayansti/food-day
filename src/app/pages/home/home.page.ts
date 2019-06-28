@@ -20,6 +20,7 @@ const CurrentUserForFirebaseId = gql`
       )
     {
       id
+      admin
     }
   }
 `;
@@ -86,6 +87,7 @@ export class HomePage implements OnInit , OnDestroy {
     })
     .valueChanges.subscribe(({data}) => {
       this.storage.set('graphId', (data['User'].id) );
+      this.storage.set('isAdmin', (data['User'].admin) );
     });
   }
 

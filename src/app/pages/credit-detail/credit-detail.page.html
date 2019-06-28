@@ -47,9 +47,9 @@
 		</ion-row>
 	</ion-grid>
 
-	<div class="ion-padding">
+ 	<div class="ion-padding" *ngIf="userAdmin">
 		<div class="boxItems">
-			<ion-button color="primary" expand="block" (click)="openAproved()">Prestar a Mary</ion-button>
+			<ion-button color="primary" expand="block" (click)="activateCredit()">Prestar a Mary</ion-button>
 		</div>
 	</div>
 

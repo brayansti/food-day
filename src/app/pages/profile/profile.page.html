@@ -10,35 +10,49 @@
 		<ion-text color="dark" >
 			<h5 *ngIf="currentUser">
 				<!-- {{ currentUser.User.name }} -->
-				{{ currentUser.name }}
+				{{ currentUser.name }} {{ currentUser.lastName }}
 			</h5>
 		</ion-text>
 	</div>
 	<div class="ion-padding">
-		<ion-item>
-			<ion-label color="dark" position="floating">Nombre</ion-label>
-			<ion-input value="Mary Jane"></ion-input>
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Nombres</ion-label>
+			<ion-input value="{{ currentUser.name }} {{ currentUser.lastNameTwo }}"></ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-label color="dark" position="floating">Direccion</ion-label>
-			<ion-input [disabled]="true" value="Carrera 97 # 7 - 12"></ion-input>
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Apellidos</ion-label>
+			<ion-input value="{{ currentUser.lastName }} {{ currentUser.lastNameTwo }}"></ion-input>
 		</ion-item>
-
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Dirección</ion-label>
+			<ion-input [disabled]="true" value="{{currentUser.addresses[0].address}}"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Detalle Dirección</ion-label>
+			<ion-input [disabled]="true" value="{{currentUser.addresses[0].addressDetail1}} {{currentUser.addresses[0].addressDetail2}}"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Pais</ion-label>
+			<ion-input [disabled]="true" value="{{currentUser.addresses[0].country}}"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="currentUser">
+			<ion-label color="dark" position="floating">Ciudad</ion-label>
+			<ion-input [disabled]="true" value="{{currentUser.addresses[0].city}}"></ion-input>
+		</ion-item>
 		<!-- ↓↓  -->
 		<div>
 			<ion-text color="dark">
 				<h4>Historial de créditos solicitados</h4>
 			</ion-text>
 		</div>
-		<ion-item>
-			<ion-label color="success" position="floating">Aprobado</ion-label>
-			<ion-input [disabled]="true" value="$ 300.000"></ion-input>
-			<ion-icon (click)="presentAlert( 1, '$300.000')" color="medium" name="information-circle-outline"></ion-icon>
-		</ion-item>
-		<ion-item>
-			<ion-label color="danger" position="floating">Rechazado</ion-label>
-			<ion-input [disabled]="true" value="$ 400.000"></ion-input>
-			<ion-icon (click)="presentAlert( 0, '$300.000')" color="medium" name="information-circle-outline"></ion-icon>
-		</ion-item>
+		<div *ngIf="currentUser">
+			<ion-item *ngFor="let request of currentUser.creditRequestses;">
+				<ion-label color='{{ request.creditState ?  "success" : "warning"}}' position="floating">
+					{{ request.creditState ?  "Aprobado" : "Pendiente"}}
+				</ion-label>
+				<ion-input [disabled]="true" value="$ {{request.creditValue}}"></ion-input>
+				<ion-icon (click)="presentAlert( request.creditState ?  1 : 0 , 'request.creditValue')" color="medium" name="information-circle-outline"></ion-icon>
+			</ion-item>
+		</div>
 	</div>
 </ion-content>

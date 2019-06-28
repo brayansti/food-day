@@ -29,7 +29,7 @@ const routes: Routes = [
         loadChildren: '../credit-request/credit-request.module#CreditRequestPageModule'
       },
       {
-        path: 'credit-detail',
+        path: 'credit-detail/:id',
         loadChildren: '../credit-detail/credit-detail.module#CreditDetailPageModule'
       },
       { path: 'form-profile',

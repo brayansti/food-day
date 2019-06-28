@@ -54,7 +54,7 @@ const updateUser = gql`
 		$extenseInsurance: String
 		$expenseAnother: String
 		$totalExtense: String
-		$economicDependents: Int
+		$economicDependents: String
 	){
 		updateUser(
 			id: $id

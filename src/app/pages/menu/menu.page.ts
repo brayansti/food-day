@@ -14,18 +14,18 @@ import { Storage } from '@ionic/storage';
 export class MenuPage implements OnInit {
 
   pages = [
-    {
-      title: 'Inicio',
-      url: '/menu/initial',
-      icon: 'home'
-    },
+    // {
+    //   title: 'Inicio',
+    //   url: '/menu/initial',
+    //   icon: 'home'
+    // },
     {
       title: 'Perfil',
       url: '/menu/profile',
       icon: 'body'
     },
     {
-      title: 'Formulario',
+      title: 'Solicitar crédito',
       url: '/menu/form-borrower',
       icon: 'clipboard'
     },
@@ -34,13 +34,13 @@ export class MenuPage implements OnInit {
       url: '/menu/credit-request',
       icon: 'list'
     },
+    // {
+    //   title: 'Detalle',
+    //   url: '/menu/credit-detail',
+    //   icon: 'list'
+    // },
     {
-      title: 'Detalle',
-      url: '/menu/credit-detail',
-      icon: 'list'
-    },
-    {
-      title: 'Form Profile',
+      title: 'Editar perfil',
       url: '/menu/form-profile',
       icon: 'person'
     }
